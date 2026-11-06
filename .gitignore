@@ -1,0 +1,12 @@
+# Local tooling
+.claude/
+
+# Source files and review aids not used by the site
+*.pptx
+images/thumbs/
+selected-images-overview.png
+
+# OS clutter
+Thumbs.db
+Desktop.ini
+.DS_Store
