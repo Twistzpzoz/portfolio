@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Microplastics detection — Case study · Myo Ko Zin</title>
+<meta name="description" content="Research case study: comparing four deep learning models for low-cost microplastics detection, presented at iSTEM-Ed 2026.">
+<meta name="theme-color" content="#f4efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Microplastics detection — Myo Ko Zin">
+<meta property="og:description" content="Research case study: comparing four deep learning models for low-cost microplastics detection, presented at iSTEM-Ed 2026.">
+<meta property="og:image" content="../images/web/research-04-detection-results-1600.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23121110'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='40' fill='%23f4efe6'%3EM%3C/text%3E%3Ccircle cx='50' cy='48' r='5' fill='%23ff4a17'/%3E%3C/svg%3E">
+<script>
+  document.documentElement.classList.add('js');
+  try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="mark" href="../" aria-label="Myo Ko Zin, home">MKZ<span>.</span></a>
+    <div class="right">
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="../#work">Work</a></li>
+          <li class="opt"><a href="../#toolkit">Toolkit</a></li>
+          <li class="opt"><a href="../#about">About</a></li>
+          <li><a href="../#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch colour theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <article>
+    <header class="case-hero">
+      <a class="back" href="../#work"><span aria-hidden="true">←</span> All work</a>
+      <div class="issue"><span class="kicker">Case study 03</span><span class="kicker">Research · Data &amp; AI</span></div>
+      <h1 class="long">Finding <em>microplastics</em> with computer vision</h1>
+      <div class="dek"><p>Can a cheap USB microscope and the right AI model let any school lab detect microplastics? <em>A four-phase pipeline, four models, one fair comparison.</em></p></div>
+      <dl class="case-facts"><div><dt>My role</dt><dd>First author, researcher &amp; presenter</dd></div><div><dt>Team</dt><dd>3 student researchers · advisor Dr. Dobri Atanassov Batovski</dd></div><div><dt>Venue</dt><dd>11th International STEM Education Conference (iSTEM-Ed 2026)</dd></div><div><dt>Tools</dt><dd>Python, Google Colab, Roboflow, USB microscope</dd></div></dl>
+    </header>
+
+    <div class="case-cover"><button class="frame zoom" type="button" data-full="../images/web/research-04-detection-results-1600.webp" aria-label="Enlarge: Detection results: four models drawing boxes around microplastic particles in microscope images"><img src="../images/web/research-04-detection-results-1600.webp" srcset="../images/web/research-04-detection-results-960.webp 960w, ../images/web/research-04-detection-results-1600.webp 1600w" sizes="(min-width: 1360px) 1280px, 94vw" width="1600" height="900" alt="Detection results: four models drawing boxes around microplastic particles in microscope images" fetchpriority="high"></button></div>
+
+    <section class="chapter" aria-labelledby="c1"><header><span class="n">§ 01</span><h2 id="c1">The problem</h2></header><div class="body prose reveal">
+<p>Microplastics, plastic particles smaller than 5 mm, are now found in oceans, rivers, soil and human tissue. Recent studies link them to cardiovascular risk and immune responses.</p>
+<p>The accurate way to identify them, <strong>FTIR or Raman spectroscopy</strong>, is too expensive for most undergraduate labs. Counting particles by eye under a microscope is cheap, but slow, subjective and error-prone.</p>
+<h3>The gap we found</h3>
+<ul>
+<li><strong>No low-cost pipeline:</strong> existing AI tools assume expensive equipment or clean, lab-quality images.</li>
+<li><strong>No fair comparison:</strong> segmentation and detection models report incompatible metrics (mIoU versus mAP), so they can't be ranked directly.</li>
+<li><strong>No integrated STEM framework</strong> combining wet-lab chemistry, hardware and AI for undergraduates.</li>
+</ul></div></section><section class="chapter" aria-labelledby="c2"><header><span class="n">§ 02</span><h2 id="c2">My role</h2></header><div class="body prose reveal">
+<p>I'm the <strong>first author</strong> of the paper. I worked through the full research cycle with two fellow students under our advisor: sample preparation, microscopy imaging, annotation in Roboflow, model training in Python on Google Colab, statistical analysis and writing.</p>
+<p>I also built the conference slides and gave the <strong>oral presentation</strong> at the 11th International STEM Education Conference.</p></div></section><section class="chapter" aria-labelledby="c3"><header><span class="n">§ 03</span><h2 id="c3">The process</h2></header><div class="body prose reveal">
+<ol class="steps"><li><div><b>Wet lab: extract the particles</b><p>Sand from Bang Saen Beach, Chonburi, separated with saturated salt water. Plastics float and sediment sinks. Then fine-mesh filtration, air drying and optical confirmation.</p></div></li><li><div><b>Hardware: low-cost imaging</b><p>A consumer 40× USB microscope with dual LED lighting. 4032×3024 images, resized to 1920×1080 and annotated by hand in Roboflow with bounding boxes and masks.</p></div></li><li><div><b>AI: four models, three training stages</b><p>Two detectors (Faster R-CNN, YOLOv5) and two segmenters (U-Net, Mask R-CNN). Each learned basic shapes from a public dataset, was fine-tuned on 50 local beach images, then adapted with 30 curated images to cope with USB-microscope glare.</p></div></li><li><div><b>Evaluation: one fair yardstick</b><p>We converted every model's output into bounding boxes using morphological opening, closing and contour detection, then scored all four on precision, recall and F1 at IoU ≥ 0.5. A Contamination Percentage (Cp) turns detections into an environmental severity measure.</p></div></li></ol>
+<figure class="fig reveal"><button class="zoom" type="button" data-full="../images/web/research-03-framework-pipeline-1600.webp" aria-label="Enlarge: The four-phase iSTEM framework pipeline"><img src="../images/web/research-03-framework-pipeline-1600.webp" srcset="../images/web/research-03-framework-pipeline-960.webp 960w, ../images/web/research-03-framework-pipeline-1600.webp 1600w" sizes="(min-width: 900px) 58vw, 94vw" width="1600" height="900" alt="The four-phase iSTEM framework pipeline" loading="lazy"></button><figcaption><b>Fig.</b><span>The iSTEM framework: chemistry, hardware, AI and mathematics in one pipeline.</span></figcaption></figure></div></section><section class="chapter" aria-labelledby="c4"><header><span class="n">§ 04</span><h2 id="c4">The results</h2></header><div class="body prose reveal">
+<div class="table-wrap"><table class="data">
+<caption class="kicker" style="text-align:left;caption-side:top;padding-bottom:10px">Model comparison on the holdout set</caption>
+<thead><tr><th scope="col">Model</th><th scope="col">Precision</th><th scope="col">Recall</th><th scope="col">F1-score</th></tr></thead>
+<tbody>
+<tr><th scope="row">Mask R-CNN</th><td>0.7725</td><td>0.8249</td><td class="best">0.7978</td></tr>
+<tr><th scope="row">Faster R-CNN</th><td>0.7135</td><td>0.7740</td><td>0.7425</td></tr>
+<tr><th scope="row">U-Net</th><td class="best">0.7546</td><td>0.6949</td><td>0.7235</td></tr>
+<tr><th scope="row">YOLOv5</th><td>0.6215</td><td class="best">0.8619</td><td>0.7222</td></tr>
+</tbody></table></div>
+<div class="stats"><div><b>0.7978</b><span>best balanced F1, from Mask R-CNN</span></div><div><b>4 of 4</b><span>models beat the random-chance baseline (z-test, p &lt; 0.05)</span></div><div><b>8–11%</b><span>stable contamination medians from U-Net and Faster R-CNN on beach samples</span></div></div>
+<p>Each model taught a different trade-off. <strong>YOLOv5</strong> catches almost everything but with more false alarms, making it a screening tool. <strong>U-Net</strong> is the most precise but misses smaller particles, so it works best as a filter. <strong>Mask R-CNN</strong> is the best all-rounder.</p>
+<blockquote class="pull">Deep learning is viable for microplastics detection <em>even on a student budget.</em></blockquote>
+<p class="note">Limitations: optical identification only (no FTIR/Raman confirmation), particles must be larger than about 8 µm for the USB microscope, and the educational reflection comes from three student co-authors.</p>
+<figure class="fig reveal"><button class="zoom" type="button" data-full="../images/web/research-05-model-comparison-1600.webp" aria-label="Enlarge: Grouped bar chart of precision, recall and F1-score for each model"><img src="../images/web/research-05-model-comparison-1600.webp" srcset="../images/web/research-05-model-comparison-960.webp 960w, ../images/web/research-05-model-comparison-1600.webp 1600w" sizes="(min-width: 900px) 58vw, 94vw" width="1600" height="900" alt="Grouped bar chart of precision, recall and F1-score for each model" loading="lazy"></button><figcaption><b>Fig.</b><span>Precision, recall and F1-score for all four architectures.</span></figcaption></figure>
+<div class="downloads"><a class="pill solid" href="../files/P07726.pdf" target="_blank" rel="noopener">Read the paper (PDF) <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="pill" href="../files/P07726_Myo_Ko_Zin.pdf" target="_blank" rel="noopener">Conference slides (PDF) <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div></div></section>
+
+    <section class="deck reveal" aria-labelledby="deck-h"><div class="deck-head"><h2 id="deck-h">Paper &amp; slides</h2><span class="kicker">Click any slide to enlarge</span></div><div class="deck-grid"><button class="zoom" type="button" data-full="../images/web/research-01-paper-first-page-1600.webp" aria-label="Enlarge: Paper, first page: title and abstract"><img src="../images/web/research-01-paper-first-page-960.webp" width="960" height="1359" loading="lazy" alt="Paper, first page: title and abstract"></button><button class="zoom" type="button" data-full="../images/web/research-02-title-slide-1600.webp" aria-label="Enlarge: Conference title slide"><img src="../images/web/research-02-title-slide-960.webp" width="960" height="540" loading="lazy" alt="Conference title slide"></button><button class="zoom" type="button" data-full="../images/web/research-03-framework-pipeline-1600.webp" aria-label="Enlarge: Four-phase framework"><img src="../images/web/research-03-framework-pipeline-960.webp" width="960" height="540" loading="lazy" alt="Four-phase framework"></button><button class="zoom" type="button" data-full="../images/web/research-04-detection-results-1600.webp" aria-label="Enlarge: Qualitative detection results"><img src="../images/web/research-04-detection-results-960.webp" width="960" height="540" loading="lazy" alt="Qualitative detection results"></button><button class="zoom" type="button" data-full="../images/web/research-05-model-comparison-1600.webp" aria-label="Enlarge: Model performance comparison"><img src="../images/web/research-05-model-comparison-960.webp" width="960" height="540" loading="lazy" alt="Model performance comparison"></button><button class="zoom" type="button" data-full="../images/web/research-06-statistical-validation-1600.webp" aria-label="Enlarge: Statistical validation"><img src="../images/web/research-06-statistical-validation-960.webp" width="960" height="540" loading="lazy" alt="Statistical validation"></button></div></section>
+  </article>
+
+  <a class="next" href="at-chris.html">
+    <span class="kicker">Next case study · 04</span>
+    <b><span class="u">At Chris</span> <span class="arrow" aria-hidden="true">→</span></b>
+  </a>
+</main>
+
+<div class="wrap">
+  <footer class="colophon">
+    <span>© <span id="year">2026</span> Myo Ko Zin</span>
+    <span><a href="../">Home</a> · <a href="mailto:myokozinbeat2002@gmail.com">myokozinbeat2002@gmail.com</a></span>
+  </footer>
+</div>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

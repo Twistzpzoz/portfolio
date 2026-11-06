@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>At Chris — Case study · Myo Ko Zin</title>
+<meta name="description" content="At Chris case study: an AI-enhanced online food ordering system for a neighbourhood Burmese rice shop.">
+<meta name="theme-color" content="#f4efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="At Chris — Myo Ko Zin">
+<meta property="og:description" content="At Chris case study: an AI-enhanced online food ordering system for a neighbourhood Burmese rice shop.">
+<meta property="og:image" content="../images/web/atchris-04-customer-menu-1600.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23121110'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='40' fill='%23f4efe6'%3EM%3C/text%3E%3Ccircle cx='50' cy='48' r='5' fill='%23ff4a17'/%3E%3C/svg%3E">
+<script>
+  document.documentElement.classList.add('js');
+  try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="mark" href="../" aria-label="Myo Ko Zin, home">MKZ<span>.</span></a>
+    <div class="right">
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="../#work">Work</a></li>
+          <li class="opt"><a href="../#toolkit">Toolkit</a></li>
+          <li class="opt"><a href="../#about">About</a></li>
+          <li><a href="../#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch colour theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <article>
+    <header class="case-hero">
+      <a class="back" href="../#work"><span aria-hidden="true">←</span> All work</a>
+      <div class="issue"><span class="kicker">Case study 04</span><span class="kicker">Product design · UI/UX &amp; AI</span></div>
+      <h1>At <em>Chris</em></h1>
+      <div class="dek"><p>From chat chaos to one clear system. Online ordering for a neighbourhood Burmese rice shop, <em>redesigned end to end for customers, the owner and drivers.</em></p></div>
+      <dl class="case-facts"><div><dt>My role</dt><dd>Team member, Senior Project 2</dd></div><div><dt>Team</dt><dd>Team CodingRats · 3 members · advisor A. Jinchan Lu</dd></div><div><dt>Context</dt><dd>Senior project, Assumption University</dd></div><div><dt>Built with</dt><dd>Next.js, Supabase, Gemini, Google Maps</dd></div></dl>
+    </header>
+
+    <div class="case-cover"><button class="frame zoom" type="button" data-full="../images/web/atchris-04-customer-menu-1600.webp" aria-label="Enlarge: At Chris customer screen: build a meal from a visual menu of stir-fried dishes"><img src="../images/web/atchris-04-customer-menu-1600.webp" srcset="../images/web/atchris-04-customer-menu-960.webp 960w, ../images/web/atchris-04-customer-menu-1600.webp 1600w" sizes="(min-width: 1360px) 1280px, 94vw" width="1600" height="900" alt="At Chris customer screen: build a meal from a visual menu of stir-fried dishes" fetchpriority="high"></button></div>
+
+    <section class="chapter" aria-labelledby="c1"><header><span class="n">§ 01</span><h2 id="c1">The problem</h2></header><div class="body prose reveal">
+<p>At Chris took every order through LINE chat. That worked until lunch got busy. We found six gaps in one broken journey:</p>
+<ol>
+<li><strong>No visual menu:</strong> no way to browse what's available today.</li>
+<li><strong>Language barrier:</strong> the menu existed only in Burmese.</li>
+<li><strong>Manual tracking:</strong> orders arrived as unstructured chat messages.</li>
+<li><strong>No confirmation:</strong> customers never knew an order was received.</li>
+<li><strong>No delivery view:</strong> no visibility once food left the shop.</li>
+<li><strong>No sales data:</strong> no record of trends, popular dishes or peak hours.</li>
+</ol></div></section><section class="chapter" aria-labelledby="c2"><header><span class="n">§ 02</span><h2 id="c2">My role</h2></header><div class="body prose reveal">
+<p>At Chris was our three-person Senior Project 2, built under the guidance of our advisor. As a team we designed and built the whole system: the customer ordering flow, the owner's admin dashboard, the driver app and the AI features.</p>
+<p>As one of three members, I worked on the product from mapping the problem through to the live system.</p></div></section><section class="chapter" aria-labelledby="c3"><header><span class="n">§ 03</span><h2 id="c3">The process</h2></header><div class="body prose reveal">
+<ol class="steps"><li><div><b>Design the customer flow</b><p>Seven taps from hungry to happy: browse, pick 2–4 dishes (฿50, ฿65 or ฿75), enter name and room, scan a PromptPay QR, have the slip verified, track delivery, receive food. No app download; it runs in any phone browser.</p></div></li><li><div><b>Make the menu readable to everyone</b><p>Visual dish cards in English, Thai and Burmese, with a live order summary that updates as the meal is built.</p></div></li><li><div><b>Give the owner one control room</b><p>A real-time dashboard with six live charts, revenue and the pending queue. Menu, sell-out and promotion editing, order history, driver accounts and a single shop open/close toggle.</p></div></li><li><div><b>Add AI where it saves time</b><p>Gemini generates a plain-language daily sales summary (top dishes, peak hours, suggestions) and reads each payment slip. Doubtful slips go to a Payment Review queue.</p></div></li><li><div><b>Connect the last mile</b><p>A driver app with a delivery queue, automatic dispatch to the nearest available driver, live GPS route and ETA, and push notifications for new assignments.</p></div></li><li><div><b>Keep everything in sync</b><p>One Next.js platform for three experiences, with Supabase Realtime keeping customer, admin and driver views synchronised.</p></div></li></ol>
+<figure class="fig reveal"><button class="zoom" type="button" data-full="../images/web/atchris-02-order-flow-1600.webp" aria-label="Enlarge: Order flow: seven taps from hungry to happy"><img src="../images/web/atchris-02-order-flow-1600.webp" srcset="../images/web/atchris-02-order-flow-960.webp 960w, ../images/web/atchris-02-order-flow-1600.webp 1600w" sizes="(min-width: 900px) 58vw, 94vw" width="1600" height="900" alt="Order flow: seven taps from hungry to happy" loading="lazy"></button><figcaption><b>Fig.</b><span>The customer order flow.</span></figcaption></figure>
+<figure class="fig reveal"><button class="zoom" type="button" data-full="../images/web/atchris-07-admin-dashboard-1600.webp" aria-label="Enlarge: Admin side: real-time dashboard with AI insights"><img src="../images/web/atchris-07-admin-dashboard-1600.webp" srcset="../images/web/atchris-07-admin-dashboard-960.webp 960w, ../images/web/atchris-07-admin-dashboard-1600.webp 1600w" sizes="(min-width: 900px) 58vw, 94vw" width="1600" height="900" alt="Admin side: real-time dashboard with AI insights" loading="lazy"></button><figcaption><b>Fig.</b><span>The owner's dashboard, with AI-generated sales insights.</span></figcaption></figure>
+<figure class="fig reveal"><button class="zoom" type="button" data-full="../images/web/atchris-03-system-architecture-1600.webp" aria-label="Enlarge: System architecture: client apps, application layer and services"><img src="../images/web/atchris-03-system-architecture-1600.webp" srcset="../images/web/atchris-03-system-architecture-960.webp 960w, ../images/web/atchris-03-system-architecture-1600.webp 1600w" sizes="(min-width: 900px) 58vw, 94vw" width="1600" height="900" alt="System architecture: client apps, application layer and services" loading="lazy"></button><figcaption><b>Fig.</b><span>One platform, three experiences.</span></figcaption></figure></div></section><section class="chapter" aria-labelledby="c4"><header><span class="n">§ 04</span><h2 id="c4">The results</h2></header><div class="body prose reveal">
+<div class="stats"><div><b>3</b><span>connected apps: customer, admin and driver</span></div><div><b>3</b><span>menu languages: English, Thai, Burmese</span></div><div><b>7</b><span>taps from browsing to a paid, tracked order</span></div></div>
+<p>The system is <strong>built and live</strong>. Customers order and pay from a QR code, the owner runs the day from one dashboard, and drivers get routed deliveries. AI daily sales insights and AI payment-slip verification are both working. Smart restock alerts are planned next.</p>
+<p>For the shop, the biggest change is that orders are now structured data instead of chat messages. That means every order is confirmed, every delivery is visible, and the owner can finally see what sells and when.</p>
+<figure class="fig reveal"><button class="zoom" type="button" data-full="../images/web/atchris-08-driver-app-1600.webp" aria-label="Enlarge: Driver side: delivery queue and live map route"><img src="../images/web/atchris-08-driver-app-1600.webp" srcset="../images/web/atchris-08-driver-app-960.webp 960w, ../images/web/atchris-08-driver-app-1600.webp 1600w" sizes="(min-width: 900px) 58vw, 94vw" width="1600" height="900" alt="Driver side: delivery queue and live map route" loading="lazy"></button><figcaption><b>Fig.</b><span>The driver app: assigned deliveries with a live Google Maps route.</span></figcaption></figure>
+<div class="downloads"><a class="pill solid" href="https://at-chris-ordering.vercel.app/order" target="_blank" rel="noopener">Try the live customer app <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="pill" href="../files/At%20Chris%20Ordering%20System.pdf" target="_blank" rel="noopener">Full design deck (PDF, 30 MB) <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div></div></section>
+
+    <section class="deck reveal" aria-labelledby="deck-h"><div class="deck-head"><h2 id="deck-h">From the deck</h2><span class="kicker">Click any slide to enlarge</span></div><div class="deck-grid"><button class="zoom" type="button" data-full="../images/web/atchris-01-cover-1600.webp" aria-label="Enlarge: Cover: At Chris, AI-enhanced online food ordering system"><img src="../images/web/atchris-01-cover-960.webp" width="960" height="540" loading="lazy" alt="Cover: At Chris, AI-enhanced online food ordering system"></button><button class="zoom" type="button" data-full="../images/web/atchris-02-order-flow-1600.webp" aria-label="Enlarge: Order flow"><img src="../images/web/atchris-02-order-flow-960.webp" width="960" height="540" loading="lazy" alt="Order flow"></button><button class="zoom" type="button" data-full="../images/web/atchris-03-system-architecture-1600.webp" aria-label="Enlarge: System architecture"><img src="../images/web/atchris-03-system-architecture-960.webp" width="960" height="540" loading="lazy" alt="System architecture"></button><button class="zoom" type="button" data-full="../images/web/atchris-04-customer-menu-1600.webp" aria-label="Enlarge: Customer: browse and build a meal"><img src="../images/web/atchris-04-customer-menu-960.webp" width="960" height="540" loading="lazy" alt="Customer: browse and build a meal"></button><button class="zoom" type="button" data-full="../images/web/atchris-05-customer-payment-qr-1600.webp" aria-label="Enlarge: Customer: pay with PromptPay QR"><img src="../images/web/atchris-05-customer-payment-qr-960.webp" width="960" height="540" loading="lazy" alt="Customer: pay with PromptPay QR"></button><button class="zoom" type="button" data-full="../images/web/atchris-06-order-tracking-1600.webp" aria-label="Enlarge: Order confirmed and live tracking"><img src="../images/web/atchris-06-order-tracking-960.webp" width="960" height="540" loading="lazy" alt="Order confirmed and live tracking"></button><button class="zoom" type="button" data-full="../images/web/atchris-07-admin-dashboard-1600.webp" aria-label="Enlarge: Admin: real-time dashboard"><img src="../images/web/atchris-07-admin-dashboard-960.webp" width="960" height="540" loading="lazy" alt="Admin: real-time dashboard"></button><button class="zoom" type="button" data-full="../images/web/atchris-08-driver-app-1600.webp" aria-label="Enlarge: Driver: delivery queue and route"><img src="../images/web/atchris-08-driver-app-960.webp" width="960" height="540" loading="lazy" alt="Driver: delivery queue and route"></button></div></section>
+  </article>
+
+  <a class="next" href="au-ordering-app.html">
+    <span class="kicker">Next case study · 05</span>
+    <b><span class="u">AU ordering app</span> <span class="arrow" aria-hidden="true">→</span></b>
+  </a>
+</main>
+
+<div class="wrap">
+  <footer class="colophon">
+    <span>© <span id="year">2026</span> Myo Ko Zin</span>
+    <span><a href="../">Home</a> · <a href="mailto:myokozinbeat2002@gmail.com">myokozinbeat2002@gmail.com</a></span>
+  </footer>
+</div>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

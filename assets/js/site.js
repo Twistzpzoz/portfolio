@@ -42,6 +42,33 @@
     });
   }
 
+  // Image viewer: every .zoom button on the page joins one sequence
+  const zooms = [...document.querySelectorAll('.zoom[data-full]')];
+  if (zooms.length && window.HTMLDialogElement) {
+    const dlg = document.createElement('dialog');
+    dlg.className = 'viewer';
+    dlg.setAttribute('aria-label', 'Image viewer');
+    dlg.innerHTML = '<div class="vf"><div class="vt"><span aria-live="polite"></span><button type="button" data-a="close">Close ✕</button></div>' +
+      '<div class="vs"><img alt=""></div><div class="vn"><button type="button" data-a="prev">← Prev</button><button type="button" data-a="next">Next →</button></div></div>';
+    document.body.appendChild(dlg);
+    const img = dlg.querySelector('img'), cap = dlg.querySelector('.vt span');
+    let i = 0;
+    const show = () => {
+      const z = zooms[i], alt = z.querySelector('img').alt;
+      img.src = z.dataset.full; img.alt = alt;
+      cap.textContent = (i + 1) + ' / ' + zooms.length + ' · ' + alt;
+    };
+    const step = (d) => { i = (i + d + zooms.length) % zooms.length; show(); };
+    zooms.forEach((z, idx) => z.addEventListener('click', () => { i = idx; show(); dlg.showModal(); }));
+    dlg.addEventListener('click', (e) => {
+      const a = e.target.closest('[data-a]');
+      if (a) { if (a.dataset.a === 'close') dlg.close(); else step(a.dataset.a === 'next' ? 1 : -1); }
+      else if (e.target === dlg || e.target.classList.contains('vs')) dlg.close();
+    });
+    dlg.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1); });
+    dlg.addEventListener('close', () => img.removeAttribute('src'));
+  }
+
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 })();
