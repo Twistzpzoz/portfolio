@@ -177,6 +177,8 @@ a { color: inherit; }
 .cover .word em { color: var(--accent); }
 .project:hover .cover .word { transform: scale(1.06); }
 .cover .corner { position: absolute; left: 16px; bottom: 14px; right: 16px; display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.cover.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% 50%; transition: transform 1.1s var(--ease); }
+.project:hover .cover.photo img { transform: scale(1.045); }
 .cover.ink { background: var(--ink); color: var(--paper); }
 .cover.ink .corner { color: color-mix(in srgb, var(--paper) 65%, transparent); }
 .cover.accent { background: var(--accent-fill); color: #121110; }
